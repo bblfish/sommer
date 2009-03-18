@@ -13,12 +13,86 @@
 	<name>Sommer :: Core</name>
 	<url>http://sommer.dev.java.net/</url>
 
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>process-test-classes</phase>
+						<configuration>
+							<tasks>
+								<taskdef name="sommer" classname="net.java.rdf.sommer.ant.Sommer"
+									classpathref="maven.compile.classpath" />
+								<sommer classpathref="maven.plugin.classpath"
+									markerName="_SommerMarker">
+									<fileset dir="${project.build.directory}/classes">
+										<include name="**/*.class" />
+									</fileset>
+									<fileset dir="${project.build.directory}/test-classes">
+										<include name="**/*.class" />
+									</fileset>
+								</sommer>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>net.java.dev.sommer</groupId>
+						<artifactId>sommer-ant</artifactId>
+						<version>1.0-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.4.3</version>
+			<scope>test</scope>
+			<exclusions>
+				<!--
+					needed to avoid endless recursion, per:
+					http://www.slf4j.org/legacy.html
+				-->
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>1.5.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.12</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>javassist</groupId>

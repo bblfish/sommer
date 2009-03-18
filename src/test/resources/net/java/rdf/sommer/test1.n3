@@ -1,0 +1,22 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix v:    <http://sommer.dev.java.net/unit-tests/test1/#> .
+
+
+v:Vehicle rdf:type owl:Class .
+v:Car     rdfs:subClassOf v:Vehicle .
+v:Plane   rdfs:subClassOf v:Vehicle .
+
+<car01>	  rdf:type v:Car;
+          v:colour "blue";
+          v:owner <user1> .
+					
+<car02>	  rdf:type v:Car;
+          v:colour "red";
+          v:owner <user2> .
+					
+<plane01> rdf:type v:Plane;
+          v:engineType "propellers";
+          v:owner <user1> .
+
