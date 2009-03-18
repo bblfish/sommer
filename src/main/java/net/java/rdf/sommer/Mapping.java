@@ -92,13 +92,19 @@ public abstract class Mapping implements Mapper, RewriteMapper, RDFFactory {
             if (classes != null) mappedClasses.addAll(classes);
         }
         Class solution =clazz;
+        boolean foundOne = false;
         //now we have to find the most specific class
         for (Class candidate: mappedClasses) {
              if (solution.isAssignableFrom(candidate)) {
                 solution = candidate;
+                foundOne = true;
             }
         }
-        return solution;
+        if (foundOne) {
+        	return solution;
+        } else {
+        	return null;
+        }
     }
 
     public void cogitate(List<Inferencer> inferenceList) {

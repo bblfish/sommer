@@ -1222,6 +1222,8 @@ public class SesameMapper extends Mapping {
          return (T) res;
       }
       Class clazz = mostSpecificSubClass(sprClzz, getTypesOf(id));
+      if (clazz == null)
+    	  return null;
 
       try {
          try {
@@ -1905,7 +1907,8 @@ public class SesameMapper extends Mapping {
       ArrayList<T> results = new ArrayList<T>();
       for (Value rv : rvalAnswers) {
          T t = map(rv, clazz);
-         results.add(t);
+         if (t != null)
+        	 results.add(t);
       }
 
       return results;
