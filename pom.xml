@@ -27,9 +27,6 @@
 									classpathref="maven.compile.classpath" />
 								<sommer classpathref="maven.plugin.classpath"
 									markerName="_SommerMarker">
-									<fileset dir="${project.build.directory}/classes">
-										<include name="**/*.class" />
-									</fileset>
 									<fileset dir="${project.build.directory}/test-classes">
 										<include name="**/*.class" />
 									</fileset>
