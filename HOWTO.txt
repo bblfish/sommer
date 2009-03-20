@@ -1,0 +1,12 @@
+HowTo use 'sommer-mavenized' in your project 
+
+1) Apache Ant has to be installed. If you don`t have it already, download it here . 
+2)Apache Maven has to be installed.
+3) First of all you have to compile the sommer-core. To do so enter sommer-core directory in terminal and type "mvn install".  
+4) Then u have to build the sommer-ant-task. Enter sommer-ant dir in terminal and do "mvn install" again.
+5) now you can use the empty sommer-project to build your own sommer-maven-project. you have to add the files using sommer (the annotated files) to the fileset section in the build.xml file in the basedir of that project.
+6) from a developement-environment e.g eclipse you can build your own project by first executing a maven packagebuild (your classes will be compiled and rewritten) and then use the normal execution(to execute your project).
+
+-- If you want your own directory-structure and projectnameing you have to customize the pom.xml also. 
+
+

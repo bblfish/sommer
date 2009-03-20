@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns="http://simple.test/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/">
+	<foaf:Person rdf:about="Horst">
+		<foaf:firstName>Horst</foaf:firstName>
+	</foaf:Person>
+	<foaf:Person rdf:about="Henriette">
+		<foaf:firstName>Henriette</foaf:firstName>
+	</foaf:Person>
+</rdf:RDF>

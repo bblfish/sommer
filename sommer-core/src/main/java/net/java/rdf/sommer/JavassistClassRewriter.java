@@ -371,7 +371,7 @@ public class JavassistClassRewriter {
             clzz.addField(marker, CtField.Initializer.constant(markerValue));
 
             clzz.toBytecode(new DataOutputStream(fout)); //todo: should not necessarily output to the same file
-
+            
             log.info("Javassist rewrote file " + clzz.getClassFile2());
          } catch (IOException e) {
             log.warning("could not write file " + clzz.getClassFile2());
