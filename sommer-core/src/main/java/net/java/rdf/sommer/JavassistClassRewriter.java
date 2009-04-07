@@ -762,68 +762,68 @@ class SommerEditor extends ExprEditor {
    SommerEditor() {
    }
 
-   /*
-   No longer rewrite constructors
-   public void edit(NewExpr arg) throws CannotCompileException {
-   JavassistClassRewriter.log("in NewExpr");
-   try {
-   Object[] annotations = arg.getConstructor().getAnnotations();
-   if (containsInverseFunctional(annotations)) {
-   JavassistClassRewriter.log("found invfunctional New expr for " + arg.getClassName());
-   CtClass[] parameterTypes = arg.getConstructor().getParameterTypes();
-   Object[][] paramAnnotations = arg.getConstructor().getParameterAnnotations();
-   if (parameterTypes.length == paramAnnotations.length) {//each parameter has an annoation
-   for (Object[] ann : paramAnnotations) {
-   rdf relation = getRdf(ann);
-   if (relation == null) return; // not all parameters have rdf annotations
-   }
-   StringBuffer code = new StringBuffer();
-   code.append("Object o = net.java.rdf.sommer.MapperManager.active().cifpObject($type,$sig,$args);");
-   code.append("System.out.println(\"returned object=\"+o);");
-   code.append("$_=(o==null)?$proceed($$):o;");
-   JavassistClassRewriter.log("code=" + code.toString());
-   arg.replace(code.toString());
-   }
-   }
-   } catch (ClassNotFoundException e) {
-   e.printStackTrace();  //todo: decide what exception to throw
-   } catch (NotFoundException e) {
-   e.printStackTrace();  //todo: decide what exception to throw
-   }
-   }
-   public void edit(ConstructorCall arg) throws CannotCompileException {
-   JavassistClassRewriter.log("in ConstructorCall");
-   try {
-   Object[] annotations = arg.getConstructor().getAnnotations();
-   if (containsInverseFunctional(annotations)) {
-   JavassistClassRewriter.log("found invfunctional ConstructorCall for " + arg.getClassName() + "." + arg.getConstructor().getName());
-   CtClass[] parameterTypes = arg.getConstructor().getParameterTypes();
-   Object[][] paramAnnotations = arg.getConstructor().getParameterAnnotations();
-   JavassistClassRewriter.log("paraType.length=" + parameterTypes.length + "; paramAnnotations.length=" + paramAnnotations.length);
-   if (parameterTypes.length == paramAnnotations.length) {//each parameter has an annoation
-   log.warning("Warning: there is not the same number of parameters as annotations!");
-   //                    for (Object[] ann : paramAnnotations) {
-   //                        rdf relation = getRdf(ann);
-   //                        if (relation == null) return; // not all parameters have rdf annotations
-   //                    }
-   }//continue anyway. javassist does not seem to be working correctly
-   StringBuffer code = new StringBuffer();
-   //first pre-allocate a name, if there is one that fits the cifp
-   code.append("net.java.rdf.sommer.MapperManager.active().preAllocateCifpName($class,$sig,$args);");
-   //this will call the preallocated name if an assignement is made
-   code.append("$proceed($$);");
-   //if the name was not used above, use it here, and clear the pre-allocated name.
-   code.append("net.java.rdf.sommer.MapperManager.active().name(this);");
-   JavassistClassRewriter.log("code=" + code.toString());
-   arg.replace(code.toString());
-   }
-   } catch (ClassNotFoundException e) {
-   e.printStackTrace();  //todo: decide what exception to throw
-   } catch (NotFoundException e) {
-   e.printStackTrace();  //todo: decide what exception to throw
-   }
-   }
-    */
+//   /*
+//   No longer rewrite constructors
+//   public void edit(NewExpr arg) throws CannotCompileException {
+//   JavassistClassRewriter.log("in NewExpr");
+//   try {
+//   Object[] annotations = arg.getConstructor().getAnnotations();
+//   if (containsInverseFunctional(annotations)) {
+//   JavassistClassRewriter.log("found invfunctional New expr for " + arg.getClassName());
+//   CtClass[] parameterTypes = arg.getConstructor().getParameterTypes();
+//   Object[][] paramAnnotations = arg.getConstructor().getParameterAnnotations();
+//   if (parameterTypes.length == paramAnnotations.length) {//each parameter has an annoation
+//   for (Object[] ann : paramAnnotations) {
+//   rdf relation = getRdf(ann);
+//   if (relation == null) return; // not all parameters have rdf annotations
+//   }
+//   StringBuffer code = new StringBuffer();
+//   code.append("Object o = net.java.rdf.sommer.MapperManager.active().cifpObject($type,$sig,$args);");
+//   code.append("System.out.println(\"returned object=\"+o);");
+//   code.append("$_=(o==null)?$proceed($$):o;");
+//   JavassistClassRewriter.log("code=" + code.toString());
+//   arg.replace(code.toString());
+//   }
+//   }
+//   } catch (ClassNotFoundException e) {
+//   e.printStackTrace();  //todo: decide what exception to throw
+//   } catch (NotFoundException e) {
+//   e.printStackTrace();  //todo: decide what exception to throw
+//   }
+//   }
+//   public void edit(ConstructorCall arg) throws CannotCompileException {
+//   JavassistClassRewriter.log("in ConstructorCall");
+//   try {
+//   Object[] annotations = arg.getConstructor().getAnnotations();
+//   if (containsInverseFunctional(annotations)) {
+//   JavassistClassRewriter.log("found invfunctional ConstructorCall for " + arg.getClassName() + "." + arg.getConstructor().getName());
+//   CtClass[] parameterTypes = arg.getConstructor().getParameterTypes();
+//   Object[][] paramAnnotations = arg.getConstructor().getParameterAnnotations();
+//   JavassistClassRewriter.log("paraType.length=" + parameterTypes.length + "; paramAnnotations.length=" + paramAnnotations.length);
+//   if (parameterTypes.length == paramAnnotations.length) {//each parameter has an annoation
+//   log.warning("Warning: there is not the same number of parameters as annotations!");
+//   //                    for (Object[] ann : paramAnnotations) {
+//   //                        rdf relation = getRdf(ann);
+//   //                        if (relation == null) return; // not all parameters have rdf annotations
+//   //                    }
+//   }//continue anyway. javassist does not seem to be working correctly
+//   StringBuffer code = new StringBuffer();
+//   //first pre-allocate a name, if there is one that fits the cifp
+//   code.append("net.java.rdf.sommer.MapperManager.active().preAllocateCifpName($class,$sig,$args);");
+//   //this will call the preallocated name if an assignement is made
+//   code.append("$proceed($$);");
+//   //if the name was not used above, use it here, and clear the pre-allocated name.
+//   code.append("net.java.rdf.sommer.MapperManager.active().name(this);");
+//   JavassistClassRewriter.log("code=" + code.toString());
+//   arg.replace(code.toString());
+//   }
+//   } catch (ClassNotFoundException e) {
+//   e.printStackTrace();  //todo: decide what exception to throw
+//   } catch (NotFoundException e) {
+//   e.printStackTrace();  //todo: decide what exception to throw
+//   }
+//   }
+//    */
    @Override
    public void edit(FieldAccess arg) throws CannotCompileException {
       try {
@@ -875,16 +875,17 @@ class SommerEditor extends ExprEditor {
       return false;
    }
 
-   /* No longer needed
-   private boolean containsInverseFunctional(Object[] annotations) {
-   JavassistClassRewriter.log("in containsInverseFunctional:" + annotations.length);
-   for (Object o : annotations) {
-   JavassistClassRewriter.log("annotation:" + o);
-   if (o instanceof inverseFunctional) return true;
-   }
-   return false;
-   }
-    */
+    // /* No longer needed
+    // private boolean containsInverseFunctional(Object[] annotations) {
+    // JavassistClassRewriter.log("in containsInverseFunctional:" +
+    // annotations.length);
+    // for (Object o : annotations) {
+    // JavassistClassRewriter.log("annotation:" + o);
+    // if (o instanceof inverseFunctional) return true;
+    // }
+    // return false;
+    // }
+    // */
    static boolean isCollection(CtClass clazz) {
       return "java.util.Collection".equals(clazz.getName());
    }
